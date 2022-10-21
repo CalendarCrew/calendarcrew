@@ -9,7 +9,7 @@ module.exports = (sequelize,DataTypes)=>{
           defaultValue: Date.now().toString(),
           allowNull: false,
       },
-      ID: {
+      birthdayID: {
           type:DataTypes.ID,
           allowNull: false,
       }
