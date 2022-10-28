@@ -22,7 +22,7 @@ router.post("/", body('name').not().isEmpty().trim().escape(),
           return res.status(400).json({ validationErrors: validationErrors.array() });
         }
         const { name, date, birthdayID } = req.body
-        const allBirthdays = await Birthday.findAll({where:{birthdayID:ID}})
+        const allBirthdays = await Birthday.findAll({where:{birthdayID:birthdayID}})
         if(allBirthdays.length === 0 ){
         const newBirthdays = await Birthday.create({ name, date, birthdayID});
         res.json(newBirthdays);
@@ -49,8 +49,8 @@ router.get("/", async (req, res, next) => {
 // Get Specific Birthday
 router.get("/:id", async (req, res, next) => {
   try {
-    const { name, date } = req.body
-    const existingBirthdays = await Birthday.findOne({ where: { ID } }); 
+    const { name, date, birthdayID } = req.body
+    const existingBirthdays = await Birthday.findOne({ where: { birthdayID } }); 
   } catch (error) {
     console.error(error);
     next(error)
@@ -75,7 +75,7 @@ router.put('/role/:id', async (req, res, next) => {
   }
 })
 
-route.delete('/:id', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
     if(!req.user) res.sendStatus(401);
     else {

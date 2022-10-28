@@ -5,9 +5,9 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 
 const db = require('./models')
-const TaskRoute = require('./routes/task')
-const BirthdayRoute = require('./routes/birthday');
-const UserRoute = require('./routes/user')
+const TaskRoute = require('../routes/task')
+const BirthdayRoute = require('../routes/birthday');
+const UserRoute = require('../routes/user')
 
 const cookieParser = require("cookie-parser");
 const jwt = require('jsonwebtoken');
@@ -68,6 +68,6 @@ app.use((error, req, res, next) => {
   });
 db.sequelize.sync().then(() => {
     app.listen(process.env.PORT,() => {
-        console.log('Running on port ${process.env.PORT}...')
+        console.log(`Running on port ${process.env.PORT}...`)
     })
 })
