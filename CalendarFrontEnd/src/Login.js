@@ -1,16 +1,29 @@
 import React, { useState } from "react"
 import PropTypes from 'prop-types';
+import { createRoutesFromElements } from "react-router-dom";
 
 async function loginUser(credentials) {
-    return fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
+
+  // console.log(credentials);
+  // return fetch('http://localhost:3000/login', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(credentials)
+    // }).then(data => data.json())
+    
+  // console.log(credentials);
+
+  return fetch('http://localhost:3000/login/', {  // Enter your IP address here
+    method: 'POST', 
+    mode: 'cors', 
+    headers: {
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-      .then(data => data.json())
-   }
+    },
+    body: JSON.stringify(credentials) // body data type must match "Content-Type" header
+  }).then(data => data.json())
+}
    
 
 export default function Login({setToken}) {
@@ -24,7 +37,6 @@ export default function Login({setToken}) {
       email,
       password
     });
-    console.log(token);
     setToken(token);
   }
 

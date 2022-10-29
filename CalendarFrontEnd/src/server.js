@@ -5,8 +5,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 
 const db = require('./models')
-const TaskRoute = require('../routes/task')
-const BirthdayRoute = require('../routes/birthday');
+const EventRoute = require('../routes/event')
 const UserRoute = require('../routes/user')
 
 const cookieParser = require("cookie-parser");
@@ -35,8 +34,7 @@ const setUser = async (req, res, next) => {
     }
 }
 app.use(setUser);
-app.use('/task',TaskRoute)
-app.use('/birthday',BirthdayRoute)
+app.use('/event',EventRoute)
 app.use('/user',UserRoute)
 
 //Authorization middleware
@@ -70,4 +68,10 @@ db.sequelize.sync().then(() => {
     app.listen(process.env.PORT,() => {
         console.log(`Running on port ${process.env.PORT}...`)
     })
+})
+
+
+app.post('/login', (req, res) => {
+    console.log(req.params);
+    res.send('POST route');
 })

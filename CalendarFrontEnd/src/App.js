@@ -5,14 +5,16 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 function setToken(userToken) {
-    sessionStorage.setItem('token', JSON.stringify(userToken));
-  }
+    // sessionStorage.setItem('token', JSON.stringify(userToken));
+    window.sessionStorage.setItem("token","b");
+}
   
-  function getToken() {
+function getToken() {
     const tokenString = sessionStorage.getItem('token');
-    const userToken = JSON.parse(tokenString);
-    return userToken?.token
-  }
+    // const userToken = JSON.parse(tokenString);
+    // console.log(userToken);
+    // return userToken?.token
+}
 
 function App() {
 
