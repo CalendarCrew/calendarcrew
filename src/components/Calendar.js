@@ -56,19 +56,16 @@ export default function Dashboard(){
 
 
     return <div className="App">
-        <h1>CalendarCrew</h1>
-        <h2>Add New Event</h2>
-        <div>
-            <input type="text" placeholder="Add Title" style={{width: "20%", marginRight: "10px"}}
+        <h1 className="calendarText">CalendarCrew</h1>
+        <input type="text" placeholder="Add Event Title" style={{width: "20%", marginRight: "10px",float:"left"}}
             value={newEvent.title} onChange={(e) => setNewEvent({...newEvent, title: e.target.value})}/>
-            <DatePicker placeholderText="Start Date" style={{marginRight: "10px"}} selected={newEvent.start} onChange={(start) => setNewEvent({...newEvent, start})}/>
-            <DatePicker placeholderText="End Date"  selected={newEvent.end} onChange={(end) => setNewEvent({...newEvent, end})}/>
-            <button style={{marginTop: "10px"}} onClick={handleAddEvent}>Add Event</button>
-        </div>
+        <DatePicker placeholderText="Event Start Date" style={{marginRight: "10px",display:"flex",float:"right"}} selected={newEvent.start} onChange={(start) => setNewEvent({...newEvent, start})}/>
+        <DatePicker placeholderText="Event End Date"  selected={newEvent.end} onChange={(end) => setNewEvent({...newEvent, end})}/>
+        <button style={{marginTop: "5px"}} onClick={handleAddEvent}>Add Event</button>
         <Calendar 
         localizer={localizer} 
         events={allEvents} startDate="start" 
         endDate="end"
-        style={{height: 500, margin: "50px"}}/>
+        style={{height: 400, margin: "5px", color:"ivory"}}/>
     </div>;
 }

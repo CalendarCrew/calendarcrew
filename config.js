@@ -1,13 +1,13 @@
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "12345",
+    PASSWORD: null,
     DB: "events",
-    dialect: "mysql",
+    dialect: "sqlite",
     pool: {
-      max: 5,
-      min: 0,
-      acquire: 10000,
-      idle: 100000
+    max: 5,
+    min: 0,
+    acquire: 10000,
+    idle: 100000
     }
   };
