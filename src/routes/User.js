@@ -1,14 +1,10 @@
 require('dotenv').config()
 const express = require("express");
 const router = express.Router();
-const crypto = require('crypto'); //native to node
-const bcrypt = require('bcrypt'); //npm install
-const cors = require('cors');
-const cookieParser = require("cookie-parser"); // you need this to access req.cookies
+const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
 const { User } = require("../models");
-const SALT_COUNT = 10; //defined by us
-const jwt = require('jsonwebtoken');
+const SALT_COUNT = 10;
 const console = require('console');
 
 // user registration
@@ -26,7 +22,6 @@ router.post("/", body('username').not().isEmpty().trim().escape(),
         const allUsers = await User.findAll({where:{email:email}})
         if(allUsers.length === 0 ){
         const newUser = await User.create({ username, email, password: bcrypassword });
-        const token = jwt.sign({ id: newUser.id, username: newUser.username }, process.env.JWT_SECRET) // generates a token
         res.json(newUser);
         }else{
           res.send('This user already exists')

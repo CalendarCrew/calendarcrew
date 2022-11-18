@@ -1,11 +1,7 @@
-require('dotenv').config()
 const express = require("express");
 const router = express.Router();
-const cookieParser = require("cookie-parser"); // you need this to access req.cookies
 const { body, validationResult } = require('express-validator');
 const { Event} = require("../models");
-const SALT_COUNT = 10; //defined by us
-const jwt = require('jsonwebtoken');
 const console = require('console');
 
 // Create Event
@@ -45,9 +41,10 @@ router.get("/", async (req, res, next) => {
 
 // Get Specific Event
 router.get("/:id", async (req, res, next) => {
+
   try {
-    const { username, password } = req.body
     const existingEvent = await Event.findByPk(req.params.id); 
+    next(existingEvent);
   } catch (error) {
     console.error(error);
     next(error)
@@ -76,7 +73,7 @@ router.delete('/:id', async (req, res, next) => {
   try {
     if(!req.user) res.sendStatus(401);
     else {
-        if(req.user.role != 'admin') res.sendStatus(401);
+        if(req.user.role !== 'admin') res.sendStatus(401);
         else {
             await Event.destroy({
                 where: {
