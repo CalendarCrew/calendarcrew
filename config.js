@@ -3,7 +3,7 @@ module.exports = {
     USER: "root",
     PASSWORD: null,
     DB: "events",
-    dialect: "sqlite",
+    dialect: "mysql",
     pool: {
     max: 5,
     min: 0,

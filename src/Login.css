@@ -12,6 +12,7 @@
 
 body {
     background-image: url("../public/pexels-pixabay-87651.jpg");
+    background-repeat: no-repeat;
     z-index: 5;
   }
   
