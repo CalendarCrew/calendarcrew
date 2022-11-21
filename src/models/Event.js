@@ -11,11 +11,12 @@ module.exports = (sequelize,DataTypes)=>{
     },
     description: {
         type:DataTypes.STRING,
-    },
+    },/*
     id: {
         type:DataTypes.ID,
         allowNull: false,
     }
+    */
   });
 
   return Event;

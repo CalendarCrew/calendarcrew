@@ -2,13 +2,48 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 200px 100px;
+  
 }
 
 .button{
     margin: 10px;
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 2;
+    color: rgb(228, 235, 233);
+    text-decoration: none;
+    background-color: rgb(32, 99, 78);
 }
+
+
+.button:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #1f1c0e;
+    transition: all 0.35s;
+    border-radius: 4px;
+  }
+
+  .button:hover {
+    color: rgb(255, 255, 255);
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+    
+  }
+  
+  .button:hover:after {
+    width: 105%;
+    height: 110%;
+    opacity: 25%; 
+  }
+
 
 body {
     background-image: url("../public/pexels-pixabay-87651.jpg");
@@ -17,4 +52,16 @@ body {
   
 .pageText{
     color:rgb(255, 255, 255);
+    font-family: 'Rajdhani', sans-serif;
+    
 }
+
+
+input{
+    border-radius: 4px;
+}
+
+label{
+    padding-right: 10px;
+}
+
